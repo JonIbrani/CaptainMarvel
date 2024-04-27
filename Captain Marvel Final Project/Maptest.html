@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive World Map with Welcome Message</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #welcome {
+            text-align: center;
+            margin: 20px;
+            font-size: 24px;
+        }
+        #map {
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div id="welcome">Interactive Map of Women in STEM</div>
+    <div id="map"></div>
+    <script>
+        var map = L.map('map', {
+            center: [20, 0],
+            zoom: 2,
+            maxBounds: [[-90, -130], [90, 130]], 
+            maxBoundsViscosity: 1.0,
+            worldCopyJump: true
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
+        }).addTo(map);
+
+        function addPin(lat, long, message) {
+            var marker = L.marker([lat, long]).addTo(map);
+            marker.bindPopup(message);
+        }
+
+        addPin(38.59762620, -80.45490260  ,"Katherine Johnson || Space Scientist");
+        addPin(51.50722, -0.1275, "Ada Lovelace || Mathematician");
+        addPin(37.926868, -78.024902, "Radia Perlman || Computer Scientist");
+        addPin(48.8566, 2.3522, "Joan Clarke || Cryptogropher");
+        addPin(42.9849, -81.2453, "Roberta Bodart || Austronaut");
+        addPin(52.2297, 21.0122, "Marie Curie || Chemist");
+        addPin(40.2732, -76.8867, "Rachel Carson || Environmental Scientist");
+        addPin(48.8566, 118.7969, "Chien-Shiung Wu || Physicist");
+        addPin(11.7480, 75.4890, "Janaki Ammal || Botanist");
+        addPin(48.8566, 2.3522, "Rosalind Franklin || Chemist");
+
+    </script>
+</body>
+</html>
