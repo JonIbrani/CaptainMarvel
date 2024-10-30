@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiStem: Women in STEM World Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        body {
+            font-family: Calibri, sans-serif; 
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+     
+        #banner-text {
+            padding-top: 50px; 
+            padding-bottom: 50px;
+            color: #720e9e;
+            overflow: hidden; 
+            white-space: nowrap; 
+            margin: 0 auto; 
+            letter-spacing: .15em; 
+            text-align: center;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+            border-right: .1em solid purple; 
+            max-width: 33ch; 
+            font-size: 2em; 
+            line-height: 1; 
+            height: 1.2em; 
+            box-sizing: border-box; 
+            position: relative; 
+        }
+
+        
+        @keyframes typing {
+          from { width: 0 }
+          to { width: 100% }
+        }
+
+       
+        @keyframes blink-caret {
+          from, to { border-color: transparent }
+          50% { border-color: purple; }
+        }
+
+        #map-container {
+            margin: 20px;
+            border: 2px solid #874CCC; 
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
+</head>
+<body>
+   
+    <div id="banner-text">History WiSTEM Achievements</div>
+    
+    <div id="map-container">
+        <div id="map"></div>
+    </div>
+    <script>
+        var map = L.map('map', {
+            center: [20, 0],
+            zoom: 2,
+            maxBounds: [[-90, -180], [90, 180]],  
+            maxBoundsViscosity: 1.0,  
+            worldCopyJump: false  
+        });
+
+    
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'Â© OpenStreetMap'
+        }).addTo(map);
+
+
+        function addPin(lat, long, message) {
+            var marker = L.marker([lat, long]).addTo(map);
+            marker.bindPopup(message);
+        }
+
+       
+        addPin(48.8566, 2.3522, "<b>Ada Lovelace</b><br>Considered the first computer programmer.");
+        addPin(-34.6037, -58.3816, "<b>Marie Curie</b><br>First woman to win a Nobel Prize and the only person to win Nobel Prizes in two different sciences.");
+        addPin(35.6895, 139.6917, "<b>Chien-Shiung Wu</b><br>Experimental physicist who made significant contributions in the field of nuclear physics.");
+        addPin(40.7128, -74.0060, "<b>Grace Hopper</b><br>Pioneer in computer programming, invented the first compiler for a computer programming language.");
+    </script>
+</body>
+</html>
