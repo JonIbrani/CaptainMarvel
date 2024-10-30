@@ -74,6 +74,6 @@ body {
     margin-bottom: 10px;
 }
 .profile-picture {
-    width: 250px; /* Full width of the container */
-    height: 250px; /* Auto height to maintain aspect ratio */
+    width: 250px; 
+    height: 250px; 
 }
